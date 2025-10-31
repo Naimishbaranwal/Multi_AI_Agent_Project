@@ -4,7 +4,7 @@ pipeline{
     environment {
         SONAR_PROJECT_KEY = 'AIOPS'
 		SONAR_SCANNER_HOME = tool 'sonarqube'
-        AWS_REGION = 'eu-north-1'
+        AWS_REGION = 'us-east-1'
         ECR_REPO = 'my-repo'
         IMAGE_TAG = 'latest'
 	}
