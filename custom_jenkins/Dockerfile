@@ -15,8 +15,10 @@ RUN apt-get update -y && apt-get install -y ca-certificates curl gnupg && \
 
 
 # Add Jenkins user to the Docker group (create if it doesn't exist)
-RUN groupadd -g ${DOCKER_GID} docker && usermod -aG docker jenkins
-
+RUN if ! getent group docker > /dev/null; then \
+      groupadd -g ${DOCKER_GID} docker; \
+    fi && \
+    usermod -aG docker jenkins
 
 # Create the Docker directory and volume for DinD
 RUN mkdir -p /var/lib/docker
